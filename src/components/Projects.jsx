@@ -1,0 +1,220 @@
+import { motion } from 'framer-motion'
+import { DraggableCardContainer, DraggableCardBody } from './ui/draggable-card'
+import { Button } from './ui/button'
+import { Github, ExternalLink, Code2, Database, Video, ShoppingCart, FileText } from 'lucide-react'
+import { BackgroundRippleEffect } from './ui/background-ripple-effect'
+
+export default function Projects() {
+  const projects = [
+    {
+      title: 'Portfolio Website',
+      description: 'A modern, responsive portfolio website built with HTML, CSS showcasing my work and skills with elegant design and smooth animations.',
+      tech: ['HTML', 'CSS', 'JavaScript'],
+      github: 'https://github.com/Yashkhope01/Portfolio',
+      demo: '#',
+      icon: Code2,
+      color: 'from-slate-900 to-slate-700'
+    },
+    {
+      title: 'MERN Repository',
+      description: 'Full-stack MERN application demonstrating modern web development practices with MongoDB, Express, React, and Node.js integration.',
+      tech: ['MongoDB', 'Express', 'React', 'Node.js'],
+      github: 'https://github.com/Yashkhope01/MERN-Repository',
+      demo: '#',
+      icon: Database,
+      color: 'from-zinc-900 to-zinc-700'
+    },
+    {
+      title: 'CP-DSA',
+      description: 'Competitive Programming and Data Structures & Algorithms repository featuring Java implementations of various algorithms and problem-solving techniques.',
+      tech: ['Java', 'Algorithms', 'Data Structures'],
+      github: 'https://github.com/Yashkhope01/CP-DSA',
+      demo: '#',
+      icon: Code2,
+      color: 'from-neutral-900 to-neutral-700'
+    },
+    {
+      title: 'Django Project',
+      description: 'Backend web application built with Django framework showcasing Python-based server-side development and database management.',
+      tech: ['Python', 'Django', 'SQLite'],
+      github: 'https://github.com/Yashkhope01/Django',
+      demo: '#',
+      icon: Database,
+      color: 'from-gray-900 to-gray-700'
+    },
+    {
+      title: 'Blog Application',
+      description: 'Dynamic blogging platform with user authentication, CRUD operations, and rich text editing built with modern JavaScript frameworks.',
+      tech: ['JavaScript', 'Node.js', 'Express'],
+      github: 'https://github.com/Yashkhope01/Blog',
+      demo: '#',
+      icon: FileText,
+      color: 'from-stone-900 to-stone-700'
+    },
+    {
+      title: 'Auction Platform',
+      description: 'Real-time auction system with bidding functionality, user management, and live updates built with JavaScript and modern web technologies.',
+      tech: ['JavaScript', 'WebSocket', 'MongoDB'],
+      github: 'https://github.com/Yashkhope01/Auction',
+      demo: '#',
+      icon: ShoppingCart,
+      color: 'from-slate-900 to-slate-700'
+    },
+  ]
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  }
+
+  return (
+    <section id="projects" className="relative py-20 px-4 overflow-hidden">
+      {/* Background Ripple Effect */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-20 dark:opacity-30 z-0 pointer-events-none">
+        <BackgroundRippleEffect
+          rows={15}
+          cols={35}
+          cellSize={42}
+          className="pointer-events-none"
+        />
+      </div>
+
+      <div className="container mx-auto relative z-20">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="text-gray-700 dark:text-cyan-400 text-sm font-medium">My Work</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mt-2">Featured Projects</h2>
+          <p className="text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
+            Here are some of my projects from GitHub showcasing full-stack development, algorithms, and creative solutions.
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        >
+          {projects.map((project, index) => {
+            const Icon = project.icon
+            return (
+              <motion.div key={index} variants={itemVariants} className="perspective-1000">
+                <DraggableCardContainer className="cursor-grab active:cursor-grabbing">
+                  <DraggableCardBody className="relative group">
+                    <div className={`relative h-full bg-gradient-to-br ${project.color} rounded-xl p-6 shadow-2xl border border-gray-800 overflow-hidden`}>
+                      {/* Subtle background pattern */}
+                      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE2YzAtMS4xLS45LTItMi0ycy0yIC45LTIgMiAuOSAyIDIgMiAyLS45IDItMnptMCAwIi8+PC9nPjwvZz48L3N2Zz4=')] opacity-10"></div>
+                      
+                      {/* Icon */}
+                      <div className="relative z-10 mb-4">
+                        <div className="w-12 h-12 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                          <Icon className="w-6 h-6 text-white" />
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="relative z-10 space-y-3">
+                        <h3 className="text-xl font-bold text-white group-hover:text-gray-100 transition-colors">
+                          {project.title}
+                        </h3>
+                        <p className="text-gray-300 text-sm leading-relaxed min-h-[80px]">
+                          {project.description}
+                        </p>
+
+                        {/* Tech Stack */}
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          {project.tech.map((tech, i) => (
+                            <span
+                              key={i}
+                              className="px-3 py-1 text-xs font-medium rounded-full bg-white/10 backdrop-blur-sm text-white border border-white/20"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Buttons */}
+                        <div className="flex gap-3 pt-4">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="flex-1 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 hover:text-white"
+                            asChild
+                          >
+                            <a href={project.github} target="_blank" rel="noopener noreferrer">
+                              <Github className="mr-2 h-4 w-4" />
+                              Code
+                            </a>
+                          </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="flex-1 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 hover:text-white"
+                            asChild
+                          >
+                            <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="mr-2 h-4 w-4" />
+                              Demo
+                            </a>
+                          </Button>
+                        </div>
+                      </div>
+
+                      {/* Glow effect on hover */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent"></div>
+                      </div>
+                    </div>
+                  </DraggableCardBody>
+                </DraggableCardContainer>
+              </motion.div>
+            )
+          })}
+        </motion.div>
+
+        {/* GitHub Link */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-12"
+        >
+          <Button
+            variant="outline"
+            size="lg"
+            className="rounded-full border-gray-800 dark:border-gray-700 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800"
+            asChild
+          >
+            <a href="https://github.com/Yashkhope01" target="_blank" rel="noopener noreferrer">
+              <Github className="mr-2 h-5 w-5" />
+              View More on GitHub
+            </a>
+          </Button>
+        </motion.div>
+      </div>
+    </section>
+  )
+}

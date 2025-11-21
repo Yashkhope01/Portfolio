@@ -220,7 +220,7 @@ export default function Contact() {
                     asChild
                     className="bg-white text-gray-900 hover:bg-gray-100"
                   >
-                    <a href="./resume_yash_khope.pdf" download>
+                    <a href="https://docs.google.com/document/d/1_HKdaa-rD9a8OFiyxxMR2VKimcPYM7Z8/edit" download>
                       Download Resume
                     </a>
                   </Button>

@@ -77,6 +77,7 @@ const DivGrid = ({
     }
   }
 
+
   return (
     <div
       ref={gridRef}
@@ -94,42 +95,42 @@ const DivGrid = ({
         const shouldAnimate = clickedCell && distance < 10
 
         return (
-          <motion.div
-            key={`${row}-${col}`}
-            className={cn(
-              "border",
-              interactive && "cursor-pointer hover:bg-gray-800/20 dark:hover:bg-gray-700/30 transition-colors"
-            )}
-            style={{
-              width: cellSize,
-              height: cellSize,
-              borderColor: borderColor,
-              backgroundColor: fillColor,
-            }}
-            animate={
-              shouldAnimate
-                ? {
-                    opacity: [0.4, 0.8, 0.4],
-                    backgroundColor: [
-                      "transparent",
-                      "rgba(107, 114, 128, 0.3)",
-                      "transparent",
-                    ],
-                  }
-                : {}
+        <motion.div
+          key={`${row}-${col}`}
+          className={cn(
+            "border",
+            interactive && "cursor-pointer hover:bg-gray-800/20 dark:hover:bg-gray-700/30 transition-colors"
+          )}
+          style={{
+            width: cellSize,
+            height: cellSize,
+            borderColor: borderColor,
+            backgroundColor: fillColor,
+          }}
+          animate={
+            shouldAnimate
+              ? {
+                  opacity: [0.4, 0.8, 0.4],
+                  backgroundColor: [
+                    "transparent",
+                    "rgba(107, 114, 128, 0.3)",
+                    "transparent",
+                  ],
+                }
+              : {}
+          }
+          transition={{
+            duration: 0.6,
+            delay: delay / 1000,
+            ease: "easeOut",
+          }}
+          onClick={() => handleCellClick(row, col)}
+          onMouseEnter={() => {
+            if (interactive && !clickedCell) {
+              handleCellClick(row, col)
             }
-            transition={{
-              duration: 0.6,
-              delay: delay / 1000,
-              ease: "easeOut",
-            }}
-            onClick={() => handleCellClick(row, col)}
-            onMouseEnter={() => {
-              if (interactive && !clickedCell) {
-                handleCellClick(row, col)
-              }
-            }}
-          />
+          }}
+        />
         )
       })}
     </div>

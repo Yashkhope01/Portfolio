@@ -16,30 +16,12 @@ export default function Projects() {
       color: 'from-slate-900 to-slate-700'
     },
     {
-      title: 'MERN Repository',
-      description: 'Full-stack MERN application demonstrating modern web development practices with MongoDB, Express, React, and Node.js integration.',
-      tech: ['MongoDB', 'Express', 'React', 'Node.js'],
-      github: 'https://github.com/Yashkhope01/MERN-Repository',
-      demo: '#',
-      icon: Database,
-      color: 'from-zinc-900 to-zinc-700'
-    },
-    {
-      title: 'CP-DSA',
-      description: 'Competitive Programming and Data Structures & Algorithms repository featuring Java implementations of various algorithms and problem-solving techniques.',
-      tech: ['Java', 'Algorithms', 'Data Structures'],
-      github: 'https://github.com/Yashkhope01/CP-DSA',
-      demo: '#',
-      icon: Code2,
-      color: 'from-neutral-900 to-neutral-700'
-    },
-    {
-      title: 'Django Project',
-      description: 'Backend web application built with Django framework showcasing Python-based server-side development and database management.',
+      title: 'E-Commerce Platform',
+      description: 'Full-stack e-commerce application built with Django framework featuring product management, user authentication, and payment integration.',
       tech: ['Python', 'Django', 'SQLite'],
       github: 'https://github.com/Yashkhope01/Django',
       demo: '#',
-      icon: Database,
+      icon: ShoppingCart,
       color: 'from-gray-900 to-gray-700'
     },
     {
@@ -115,7 +97,7 @@ export default function Projects() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto"
         >
           {projects.map((project, index) => {
             const Icon = project.icon

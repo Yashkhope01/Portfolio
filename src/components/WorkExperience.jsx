@@ -9,7 +9,7 @@ export default function WorkExperience() {
       icon: Building2,
       title: 'Backend Web Developer',
       company: 'Techlathe IT Solutions',
-      period: '2023 - Present',
+      period: 'Oct 2023 - Dec 2023',
       description: 'Built RESTful APIs using Node.js and MongoDB, and tested endpoints via Postman for data collection modules.',
       achievements: [
         'Implemented robust data collection and management solutions leveraging MongoDB, demonstrating core MERN stack proficiency.',

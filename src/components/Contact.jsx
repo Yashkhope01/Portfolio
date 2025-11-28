@@ -202,15 +202,17 @@ export default function Contact() {
                 <p className="text-gray-300 mb-6">
                   I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
                 </p>
-                <Button
-                  variant="secondary"
-                  asChild
-                  className="bg-white text-gray-900 hover:bg-gray-100"
-                >
-                  <a href="./resume_yash_khope.pdf" download>
-                    Download Resume
-                  </a>
-                </Button>
+                <div className="flex gap-4">
+                  <Button
+                    variant="secondary"
+                    asChild
+                    className="bg-white text-gray-900 hover:bg-gray-100"
+                  >
+                    <a href="https://docs.google.com/document/d/1_HKdaa-rD9a8OFiyxxMR2VKimcPYM7Z8/edit" download>
+                      Download Resume
+                    </a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </motion.div>

@@ -104,7 +104,7 @@ export default function Hero() {
                 className="rounded-full bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100"
                 asChild
               >
-                <a href="./web dev.pdf" download>
+                <a href="https://docs.google.com/document/d/1_HKdaa-rD9a8OFiyxxMR2VKimcPYM7Z8/edit" download>
                   <Download className="mr-2 h-5 w-5" />
                   Download Resume
                 </a>

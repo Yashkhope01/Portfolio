@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
-import { BackgroundRippleEffect } from './ui/background-ripple-effect'
 
 export default function Services() {
   const services = [
@@ -66,15 +65,7 @@ export default function Services() {
 
   return (
     <section id="services" className="relative py-20 px-4 overflow-hidden">
-      {/* Background Ripple Effect */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-15 dark:opacity-25 z-0 pointer-events-none">
-        <BackgroundRippleEffect
-          rows={12}
-          cols={32}
-          cellSize={44}
-          className="pointer-events-none"
-        />
-      </div>
+     
 
       <div className="container mx-auto relative z-20">
         <motion.div

@@ -1,10 +1,12 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Services from './components/Services'
-import WorkExperience from './components/WorkExperience'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Services from "./components/Services";
+import WorkExperience from "./components/WorkExperience";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+
+import GlowSeparator from "./components/GlowSeparator";
 
 function App() {
   return (
@@ -12,24 +14,22 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <div className="container mx-auto px-4">
-          <div className="h-px bg-gradient-to-r from-transparent via-gray-400 dark:via-gray-700 to-transparent my-20" />
-        </div>
+        <GlowSeparator />
+
         <Services />
-        <div className="container mx-auto px-4">
-          <div className="h-px bg-gradient-to-r from-transparent via-gray-400 dark:via-gray-700 to-transparent my-20" />
-        </div>
+        <GlowSeparator />
+
         <WorkExperience />
-        <div className="container mx-auto px-4">
-          <div className="h-px bg-gradient-to-r from-transparent via-gray-400 dark:via-gray-700 to-transparent my-20" />
-        </div>
+        <GlowSeparator />
+
         <Projects />
+        <GlowSeparator />
+
         <Contact />
       </main>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
-
+export default App;

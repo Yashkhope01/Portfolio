@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { DraggableCardContainer, DraggableCardBody } from './ui/draggable-card'
 import { Button } from './ui/button'
 import { Github, ExternalLink, Code2, Database, Video, ShoppingCart, FileText } from 'lucide-react'
-import { BackgroundRippleEffect } from './ui/background-ripple-effect'
+
 
 export default function Projects() {
   const projects = [
@@ -11,7 +11,7 @@ export default function Projects() {
       description: 'A modern, responsive portfolio website built with HTML, CSS showcasing my work and skills with elegant design and smooth animations.',
       tech: ['HTML', 'CSS', 'JavaScript'],
       github: 'https://github.com/Yashkhope01/Portfolio',
-      demo: '#',
+      demo: 'https://yashkhope01.github.io/Portfolio/',
       icon: Code2,
       color: 'from-slate-900 to-slate-700'
     },
@@ -67,15 +67,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="relative py-20 px-4 overflow-hidden">
-      {/* Background Ripple Effect */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-20 dark:opacity-30 z-0 pointer-events-none">
-        <BackgroundRippleEffect
-          rows={15}
-          cols={35}
-          cellSize={42}
-          className="pointer-events-none"
-        />
-      </div>
+    
 
       <div className="container mx-auto relative z-20">
         <motion.div
@@ -103,7 +95,7 @@ export default function Projects() {
             const Icon = project.icon
             return (
               <motion.div key={index} variants={itemVariants} className="perspective-1000">
-                <DraggableCardContainer className="cursor-grab active:cursor-grabbing">
+                <DraggableCardContainer className="cursor-grab active:hover:cursor-grabbing">
                   <DraggableCardBody className="relative group">
                     <div className={`relative h-full bg-gradient-to-br ${project.color} rounded-xl p-6 shadow-2xl border border-gray-800 overflow-hidden`}>
                       {/* Subtle background pattern */}

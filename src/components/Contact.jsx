@@ -1,72 +1,62 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
-import { Button } from './ui/button'
-import { Input } from './ui/input'
-import { Textarea } from './ui/textarea'
-import { Send, Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react'
-import { BackgroundRippleEffect } from './ui/background-ripple-effect'
+"use client";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { Send, Mail, Phone, MapPin, CheckCircle2 } from "lucide-react";
+import { LampContainer } from "@/components/ui/lamp";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
-  const [submitted, setSubmitted] = useState(false)
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    // Here you would typically send the form data to a backend
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    setSubmitted(true);
     setTimeout(() => {
-      setSubmitted(false)
-      setFormData({ name: '', email: '', subject: '', message: '' })
-    }, 3000)
-  }
+      setSubmitted(false);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    }, 3000);
+  };
 
   const contactInfo = [
     {
       icon: Mail,
-      title: 'Email',
-      value: 'yashkhope01@gmail.com',
-      href: 'mailto:yashkhope01@gmail.com'
+      title: "Email",
+      value: "yashkhope01@gmail.com",
+      href: "mailto:yashkhope01@gmail.com",
     },
     {
       icon: Phone,
-      title: 'Phone',
-      value: '+91 8975905912',
-      href: 'tel:+918975905912'
+      title: "Phone",
+      value: "+91 8975905912",
+      href: "tel:+918975905912",
     },
     {
       icon: MapPin,
-      title: 'Location',
-      value: 'India',
-      href: '#'
-    }
-  ]
+      title: "Location",
+      value: "India",
+      href: "#",
+    },
+  ];
 
   return (
     <section id="contact" className="relative py-20 px-4 overflow-hidden">
-      {/* Background Ripple Effect */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-15 dark:opacity-25 z-0 pointer-events-none">
-        <BackgroundRippleEffect
-          rows={12}
-          cols={30}
-          cellSize={45}
-          className="pointer-events-none"
-        />
-      </div>
-
       <div className="container mx-auto relative z-20">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -76,7 +66,9 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">Get In Touch</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mt-2">Contact Me</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mt-2">
+            Contact Me
+          </h2>
           <p className="text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
             Have a question or want to work together? Feel free to reach out!
           </p>
@@ -110,55 +102,51 @@ export default function Contact() {
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <Input
-                        type="text"
-                        name="name"
-                        placeholder="Your Name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="bg-white dark:bg-gray-950 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
-                      />
-                    </div>
-                    <div>
-                      <Input
-                        type="email"
-                        name="email"
-                        placeholder="Your Email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="bg-white dark:bg-gray-950 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
-                      />
-                    </div>
-                    <div>
-                      <Input
-                        type="text"
-                        name="subject"
-                        placeholder="Subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        required
-                        className="bg-white dark:bg-gray-950 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
-                      />
-                    </div>
-                    <div>
-                      <Textarea
-                        name="message"
-                        placeholder="Your Message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        rows={5}
-                        className="bg-white dark:bg-gray-950 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
-                      />
-                    </div>
-                      <Button
-                        type="submit"
-                        size="lg"
-                        className="w-full rounded-full bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100"
-                      >
+                    <Input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="bg-white dark:bg-gray-950 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
+                    />
+
+                    <Input
+                      type="email"
+                      name="email"
+                      placeholder="Your Email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="bg-white dark:bg-gray-950 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
+                    />
+
+                    <Input
+                      type="text"
+                      name="subject"
+                      placeholder="Subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      className="bg-white dark:bg-gray-950 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
+                    />
+
+                    <Textarea
+                      name="message"
+                      placeholder="Your Message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={5}
+                      className="bg-white dark:bg-gray-950 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
+                    />
+
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full rounded-full bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100"
+                    >
                       <Send className="mr-2 h-5 w-5" />
                       Send Message
                     </Button>
@@ -185,13 +173,13 @@ export default function Contact() {
               </CardHeader>
               <CardContent className="space-y-6">
                 {contactInfo.map((info, index) => {
-                  const Icon = info.icon
+                  const Icon = info.icon;
                   return (
                     <motion.a
                       key={index}
                       href={info.href}
-                      target={info.href.startsWith('http') ? '_blank' : undefined}
-                      rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      target={info.href.startsWith("http") ? "_blank" : undefined}
+                      rel={info.href.startsWith("http") ? "noopener noreferrer" : undefined}
                       whileHover={{ x: 10 }}
                       className="flex items-start gap-4 p-4 rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                     >
@@ -203,7 +191,7 @@ export default function Contact() {
                         <p className="text-gray-600 dark:text-gray-300">{info.value}</p>
                       </div>
                     </motion.a>
-                  )
+                  );
                 })}
               </CardContent>
             </Card>
@@ -214,23 +202,20 @@ export default function Contact() {
                 <p className="text-gray-300 mb-6">
                   I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
                 </p>
-                <div className="flex gap-4">
-                  <Button
-                    variant="secondary"
-                    asChild
-                    className="bg-white text-gray-900 hover:bg-gray-100"
-                  >
-                    <a href="./resume_yash_khope.pdf" download>
-                      Download Resume
-                    </a>
-                  </Button>
-                </div>
+                <Button
+                  variant="secondary"
+                  asChild
+                  className="bg-white text-gray-900 hover:bg-gray-100"
+                >
+                  <a href="./resume_yash_khope.pdf" download>
+                    Download Resume
+                  </a>
+                </Button>
               </CardContent>
             </Card>
           </motion.div>
         </div>
       </div>
     </section>
-  )
+  );
 }
-

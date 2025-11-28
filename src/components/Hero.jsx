@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from './ui/button'
 import { Download, Github } from 'lucide-react'
-import { BackgroundRippleEffect } from './ui/background-ripple-effect'
 
-const TYPOGRAPHY_PHRASES = ['Video Editor.', 'Web Dev.']
+
+const TYPOGRAPHY_PHRASES = ['Video Editor.', 'Web Developer.']
 const HERO_IMAGE_URL = './—Pngtree—developers are coding programs on_14867886.png'
 
 const useTypewriter = (phrases) => {
@@ -54,15 +54,7 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center pt-20 px-4 overflow-visible"
     >
-      <div className="absolute inset-0 flex items-center justify-center opacity-30 dark:opacity-40 z-0 pointer-events-none">
-        <BackgroundRippleEffect
-          rows={12}
-          cols={30}
-          cellSize={48}
-          className="pointer-events-none"
-        />
-      </div>
-
+      
       <div className="container mx-auto relative z-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -77,9 +69,9 @@ export default function Hero() {
               transition={{ delay: 0.2 }}
               className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white space-y-1"
             >
-              <p>Hi, my name is</p>
+              <p>Hi, my name is Yash</p>
               <span className="bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-300 dark:to-white bg-clip-text text-transparent">
-                Yash
+            
               </span>
             </motion.div>
 

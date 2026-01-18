@@ -125,7 +125,7 @@ export default function CoffeeCounter() {
             {coffeeCount.toLocaleString()}
           </motion.div>
           <div className="text-xs text-amber-700 dark:text-amber-300">
-            Click for Coffee! ☕
+            Coffees consumed ☕
           </div>
         </div>
       </motion.button>

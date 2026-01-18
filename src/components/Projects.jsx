@@ -18,11 +18,11 @@ export default function Projects() {
       color: 'from-slate-900 to-slate-700'
     },
     {
-      title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce application built with Django framework featuring product management, user authentication, and payment integration.',
+      title: 'Inventory Manager',
+      description: 'A Django-based Inventory Manager is a web application designed to efficiently track, manage, and control inventory for businesses such as retail stores, warehouses, and small enterprises.',
       tech: ['Python', 'Django', 'SQLite'],
       github: 'https://github.com/Yashkhope01/Django',
-      demo: '#',
+      demo: 'https://yashkhope.pythonanywhere.com/',
       icon: ShoppingCart,
       color: 'from-gray-900 to-gray-700'
     },
@@ -31,7 +31,7 @@ export default function Projects() {
       description: 'Dynamic blogging platform with user authentication, CRUD operations, and rich text editing built with modern JavaScript frameworks.',
       tech: ['JavaScript', 'Node.js', 'Express'],
       github: 'https://github.com/Yashkhope01/Blog',
-      demo: '#',
+      demo: 'https://blog-frontend-s756.onrender.com/',
       icon: FileText,
       color: 'from-stone-900 to-stone-700'
     },

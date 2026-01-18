@@ -1,102 +1,102 @@
-import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
-import { Button } from './ui/button'
-import { Download, Github } from 'lucide-react'
-
-
-const TYPOGRAPHY_PHRASES = ['Video Editor.', 'Web Developer.']
-const HERO_IMAGE_URL = './—Pngtree—developers are coding programs on_14867886.png'
-
-const useTypewriter = (phrases) => {
-  const [index, setIndex] = useState(0)
-  const [text, setText] = useState('')
-  const [mode, setMode] = useState('typing')
-
-  useEffect(() => {
-    if (!phrases.length) {
-      return undefined
-    }
-
-    let timeout
-    const currentPhrase = phrases[index]
-
-    if (mode === 'typing') {
-      const nextChar = currentPhrase[text.length]
-      if (nextChar) {
-        timeout = setTimeout(() => setText((prev) => prev + nextChar), 70)
-      } else {
-        timeout = setTimeout(() => setMode('waiting'), 1400)
-      }
-    } else if (mode === 'waiting') {
-      timeout = setTimeout(() => setMode('deleting'), 800)
-    } else if (mode === 'deleting') {
-      if (text.length > 0) {
-        timeout = setTimeout(() => setText((prev) => prev.slice(0, -1)), 40)
-      } else {
-        timeout = setTimeout(() => {
-          setIndex((prev) => (prev + 1) % phrases.length)
-          setMode('typing')
-        }, 200)
-      }
-    }
-
-    return () => clearTimeout(timeout)
-  }, [text, mode, index, phrases])
-
-  return text
-}
+import { motion } from "framer-motion"
+import { Download, Github } from "lucide-react"
+import { Button } from "./ui/button"
+import { EncryptedText } from "./ui/encrypted-text"
 
 export default function Hero() {
-  const typedText = useTypewriter(TYPOGRAPHY_PHRASES)
-
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-20 px-4 overflow-visible"
+      className="relative min-h-screen flex items-center justify-center pt-20 px-4 overflow-hidden"
     >
-      
       <div className="container mx-auto relative z-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Text column */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white space-y-1"
+              transition={{ delay: 0.1 }}
+              className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white relative inline-block"
             >
-              <p>Hi, my name is Yash</p>
-              <span className="bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-300 dark:to-white bg-clip-text text-transparent">
-            
-              </span>
+              <EncryptedText
+                text="Hi, I am Yash"
+                revealDelayMs={80}
+                encryptedClassName="text-gray-400 dark:text-gray-600"
+                revealedClassName="text-gray-900 dark:text-white"
+              />
+
+              {/* Scribble underline */}
+              <svg className="absolute -bottom-2 left-0 w-full max-w-[160px]" viewBox="0 0 200 20">
+                <motion.path
+                  d="M5 15 Q 50 5, 100 15 T 195 10"
+                  stroke="#60A5FA"
+                  strokeWidth="4"
+                  fill="transparent"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 1.2, delay: 0.7 }}
+                />
+              </svg>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.25 }}
               className="text-3xl md:text-5xl text-gray-800 dark:text-white"
             >
-              and I am a passionate
+              <EncryptedText
+                text="and I am a passionate"
+                revealDelayMs={110}
+                encryptedClassName="text-gray-400 dark:text-gray-600"
+                revealedClassName="text-gray-800 dark:text-white"
+              />
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="text-3xl md:text-5xl bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-300 dark:to-white bg-clip-text text-transparent font-bold"
+              transition={{ delay: 0.4 }}
+              className="text-3xl md:text-5xl font-bold relative bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-200 dark:to-white bg-clip-text text-transparent"
             >
-              <span className="typing-cursor">{typedText}</span>
+              <EncryptedText
+                text="Web Developer & Video Editor"
+                revealDelayMs={140}
+                encryptedClassName="text-gray-500 dark:text-gray-500"
+                revealedClassName="bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-200 dark:to-white bg-clip-text text-transparent"
+              />
+
+              <motion.div
+                initial={{ opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1 }}
+                className="hidden lg:block absolute -right-32 top-0 rotate-12"
+                style={{ fontFamily: "Caveat, cursive" }}
+              >
+                <p className="text-blue-400 text-2xl">Yes, I edit in 4K! 🎬</p>
+                <svg
+                  width="60"
+                  height="40"
+                  viewBox="0 0 60 40"
+                  className="mt-2 text-blue-400 fill-none stroke-current"
+                >
+                  <path d="M5 5 C 20 30, 40 35, 55 10" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M50 15 L 55 10 L 48 8" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </motion.div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
+              transition={{ delay: 0.55 }}
               className="flex flex-col sm:flex-row gap-4 pt-6"
             >
               <Button
@@ -104,9 +104,17 @@ export default function Hero() {
                 className="rounded-full bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100"
                 asChild
               >
-                <a href="https://docs.google.com/document/d/1_HKdaa-rD9a8OFiyxxMR2VKimcPYM7Z8/edit" download>
+                <a
+                  href="https://drive.google.com/file/d/1YI7uvMSLbObXa-p4Sj-32DFU00ie5pFD/view?usp=sharing"
+                  download
+                >
                   <Download className="mr-2 h-5 w-5" />
-                  Download Resume
+                  <EncryptedText
+                    text="Download Resume"
+                    revealDelayMs={15}
+                    encryptedClassName="text-white/70 dark:text-black/70"
+                    revealedClassName="text-white dark:text-black"
+                  />
                 </a>
               </Button>
               <Button
@@ -121,28 +129,40 @@ export default function Hero() {
                   rel="noopener noreferrer"
                 >
                   <Github className="mr-2 h-5 w-5" />
-                  Visit GitHub
+                  <EncryptedText
+                    text="Visit GitHub"
+                    revealDelayMs={15}
+                    encryptedClassName="text-gray-500 dark:text-gray-500"
+                    revealedClassName="text-gray-900 dark:text-gray-300"
+                  />
                 </a>
               </Button>
             </motion.div>
           </motion.div>
 
+          {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex justify-center"
+            className="flex justify-center items-center relative h-[500px] w-full"
           >
-            <motion.img
-              src={HERO_IMAGE_URL}
-              alt="Developer coding"
-              className="w-full max-w-md h-auto"
-              loading="lazy"
-            />
+            <motion.div className="relative z-10">
+                <motion.img
+                  src="./me.png"
+                  alt="Developer coding"
+                  width="400"
+                  height="400"
+                  className="w-full max-w-xs h-auto rounded-full shadow-2xl bg-white/70 dark:bg-gray-900/50 p-2 object-contain"
+                  loading="lazy"
+                  decoding="async"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                />
+            </motion.div>
           </motion.div>
         </div>
       </div>
     </section>
   )
 }
-

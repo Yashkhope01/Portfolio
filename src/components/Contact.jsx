@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -16,12 +16,29 @@ export default function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const [typingTimeout, setTypingTimeout] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+    
+    // Show typing indicator
+    setIsTyping(true);
+    
+    // Clear existing timeout
+    if (typingTimeout) {
+      clearTimeout(typingTimeout);
+    }
+    
+    // Hide typing indicator after 1 second of no typing
+    const newTimeout = setTimeout(() => {
+      setIsTyping(false);
+    }, 1000);
+    
+    setTypingTimeout(newTimeout);
   };
 
   const handleSubmit = (e) => {
@@ -56,7 +73,13 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative py-20 px-4 overflow-hidden">
+    <section id="contact" className="relative py-12 px-4 overflow-hidden">
+      {/* Lamp effect for dark mode */}
+      <div className="absolute top-0 left-0 right-0 h-[200px] hidden dark:block pointer-events-none">
+        <LampContainer className="opacity-50 absolute inset-0">
+          <div></div>
+        </LampContainer>
+      </div>
       <div className="container mx-auto relative z-20">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -141,6 +164,37 @@ export default function Contact() {
                       rows={5}
                       className="bg-white dark:bg-gray-950 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
                     />
+
+                    {/* Typing Indicator */}
+                    <AnimatePresence>
+                      {isTyping && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="flex items-center gap-2 text-sm text-purple-600 dark:text-purple-400"
+                        >
+                          <div className="flex gap-1">
+                            <motion.span
+                              animate={{ opacity: [0.4, 1, 0.4] }}
+                              transition={{ duration: 1, repeat: Infinity, delay: 0 }}
+                              className="w-2 h-2 bg-purple-600 dark:bg-purple-400 rounded-full"
+                            />
+                            <motion.span
+                              animate={{ opacity: [0.4, 1, 0.4] }}
+                              transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
+                              className="w-2 h-2 bg-purple-600 dark:bg-purple-400 rounded-full"
+                            />
+                            <motion.span
+                              animate={{ opacity: [0.4, 1, 0.4] }}
+                              transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
+                              className="w-2 h-2 bg-purple-600 dark:bg-purple-400 rounded-full"
+                            />
+                          </div>
+                          <span>Typing...</span>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
 
                     <Button
                       type="submit"

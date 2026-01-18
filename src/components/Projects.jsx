@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion'
-import { DraggableCardContainer, DraggableCardBody } from './ui/draggable-card'
 import { Button } from './ui/button'
 import { Github, ExternalLink, Code2, Database, Video, ShoppingCart, FileText } from 'lucide-react'
+import { LampContainer } from './ui/lamp'
+import { useState } from 'react'
 
 
 export default function Projects() {
+  const [hoveredCard, setHoveredCard] = useState(null)
   const projects = [
     {
       title: 'Portfolio Website',
@@ -66,8 +68,13 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="relative py-20 px-4 overflow-hidden">
-    
+    <section id="projects" className="relative py-12 px-4 overflow-hidden">
+      {/* Lamp effect for dark mode */}
+      <div className="absolute top-0 left-0 right-0 h-[200px] hidden dark:block pointer-events-none">
+        <LampContainer className="opacity-50 absolute inset-0">
+          <div></div>
+        </LampContainer>
+      </div>
 
       <div className="container mx-auto relative z-20">
         <motion.div
@@ -77,7 +84,7 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-gray-700 dark:text-cyan-400 text-sm font-medium">My Work</span>
+          <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">My Work</span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mt-2">Featured Projects</h2>
           <p className="text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
             Here are some of my projects from GitHub showcasing full-stack development, algorithms, and creative solutions.
@@ -94,10 +101,17 @@ export default function Projects() {
           {projects.map((project, index) => {
             const Icon = project.icon
             return (
-              <motion.div key={index} variants={itemVariants} className="perspective-1000">
-                <DraggableCardContainer className="cursor-grab active:hover:cursor-grabbing">
-                  <DraggableCardBody className="relative group">
-                    <div className={`relative h-full bg-gradient-to-br ${project.color} rounded-xl p-6 shadow-2xl border border-gray-800 overflow-hidden`}>
+              <motion.div 
+                key={index} 
+                variants={itemVariants} 
+                className="perspective-1000"
+                onMouseEnter={() => setHoveredCard(index)}
+                onMouseLeave={() => setHoveredCard(null)}
+              >
+                <div className={`relative group h-full transition-all duration-300 ${
+                  hoveredCard !== null && hoveredCard !== index ? 'blur-[2px] scale-[0.98] opacity-60' : ''
+                }`}>
+                  <div className={`relative h-full bg-gradient-to-br ${project.color} rounded-xl p-6 shadow-2xl border border-gray-800 overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-3xl`}>
                       {/* Subtle background pattern */}
                       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE2YzAtMS4xLS45LTItMi0ycy0yIC45LTIgMiAuOSAyIDIgMiAyLS45IDItMnptMCAwIi8+PC9nPjwvZz48L3N2Zz4=')] opacity-10"></div>
                       
@@ -161,9 +175,8 @@ export default function Projects() {
                         <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent"></div>
                       </div>
                     </div>
-                  </DraggableCardBody>
-                </DraggableCardContainer>
-              </motion.div>
+                  </div>
+                </motion.div>
             )
           })}
         </motion.div>

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Linkedin, Instagram, Github, Twitter, Phone, Mail } from 'lucide-react'
+import CoffeeCounter from './CoffeeCounter'
 
 export default function Footer() {
   const footerLinks = [
@@ -79,6 +80,17 @@ export default function Footer() {
             </motion.div>
           ))}
         </div>
+
+        {/* Coffee Counter */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-12 flex justify-center"
+        >
+          <CoffeeCounter />
+        </motion.div>
 
         {/* Copyright */}
         <motion.div

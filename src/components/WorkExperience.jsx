@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
 import { Building2, Users, Briefcase, Calendar } from 'lucide-react'
+import { LampContainer } from './ui/lamp'
+import { useState } from 'react'
 
 
 export default function WorkExperience() {
+  const [hoveredCard, setHoveredCard] = useState(null)
   const experiences = [
     {
       icon: Building2,
@@ -68,8 +71,13 @@ export default function WorkExperience() {
   }
 
   return (
-    <section id="experience" className="relative py-20 px-4 overflow-hidden">
-      
+    <section id="experience" className="relative py-12 px-4 overflow-hidden">
+      {/* Lamp effect for dark mode */}
+      <div className="absolute top-0 left-0 right-0 h-[200px] hidden dark:block pointer-events-none">
+        <LampContainer className="opacity-50 absolute inset-0">
+          <div></div>
+        </LampContainer>
+      </div>
 
       <div className="container mx-auto relative z-20">
         <motion.div
@@ -96,7 +104,15 @@ export default function WorkExperience() {
           {experiences.map((experience, index) => {
             const Icon = experience.icon
             return (
-              <motion.div key={index} variants={itemVariants}>
+              <motion.div 
+                key={index} 
+                variants={itemVariants}
+                onMouseEnter={() => setHoveredCard(index)}
+                onMouseLeave={() => setHoveredCard(null)}
+                className={`transition-all duration-300 ${
+                  hoveredCard !== null && hoveredCard !== index ? 'blur-[2px] scale-[0.98] opacity-60' : ''
+                }`}
+              >
                 <Card className="h-full bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 hover:shadow-xl hover:shadow-black/20 dark:hover:shadow-white/5 hover:scale-105">
                   <CardHeader className="text-center">
                     <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${experience.color} flex items-center justify-center`}>

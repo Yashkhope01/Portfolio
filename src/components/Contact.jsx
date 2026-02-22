@@ -262,7 +262,7 @@ export default function Contact() {
                     asChild
                     className="bg-white text-gray-900 hover:bg-gray-100"
                   >
-                    <a href="https://docs.google.com/document/d/1_HKdaa-rD9a8OFiyxxMR2VKimcPYM7Z8/edit" download>
+                    <a href="https://drive.google.com/file/d/1EDDL1bBF79Qq3GKFtlR1QEhtwiPlg1V-/view?usp=sharing" download>
                       Download Resume
                     </a>
                   </Button>
